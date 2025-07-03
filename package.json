@@ -1,0 +1,30 @@
+{
+  "name": "parodent1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "prestart": "npm run build",
+    "gcp-build": "npm run build",
+    "deploy": "docker build -t gcr.io/musique-e921f/signup-image:v1 . && docker push gcr.io/musique-e921f/signup-image:v1 && kubectl rollout restart deployment/signup-service"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.4.0",
+    "jsonwebtoken": "^9.0.2",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
+    "@types/body-parser": "^1.19.6",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10"
+  }
+}
