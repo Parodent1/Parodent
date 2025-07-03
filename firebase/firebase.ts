@@ -1,9 +1,15 @@
 import admin from 'firebase-admin';
-import serviceAccount from '../parodent-bd5b2-firebase-adminsdk-fbsvc-fe77982253.json';
-import { ServiceAccount } from 'firebase-admin';
+import dotenv from 'dotenv'
+import path from 'path'
+
+dotenv.config();
+
+const serviceAccountPath = path.resolve(__dirname, '..', process.env.FIREBASE_KEY || '')
+
+
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount as ServiceAccount)
+    credential: admin.credential.cert(require(serviceAccountPath))
 });
 
 const db = admin.firestore()
