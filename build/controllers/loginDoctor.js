@@ -42,7 +42,7 @@ const loginDoctor = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const token = jsonwebtoken_1.default.sign({
             id: doctorDoc.id,
             email: doctor.email
-        }, JWT_SECRET, { expiresIn: '2h' });
+        }, JWT_SECRET, { expiresIn: '7h' });
         res.status(200).json({ token });
     }
     catch (error) {

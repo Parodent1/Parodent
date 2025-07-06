@@ -40,7 +40,7 @@ export const loginDoctor = async(req: Request, res: Response): Promise<void> => 
             {
                 id: doctorDoc.id,
                 email: doctor.email
-            }, JWT_SECRET, {expiresIn: '2h'})
+            }, JWT_SECRET, {expiresIn: '7h'})
 
             res.status(200).json({ token })
     } catch (error) {
