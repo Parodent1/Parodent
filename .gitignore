@@ -8,3 +8,4 @@ build/secrets/
 .parodent*
 secrets/
 build/secrets/
+.env
