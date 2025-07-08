@@ -17,6 +17,14 @@ export const addNewDoctor = async (req: Request, res: Response): Promise<void> =
     }
 
     try {
+        const existingDoctor = await db.collection('doctors')
+        .where('email', '==', email)
+        .get();
+
+        if(!existingDoctor.empty) {
+            res.status(400).send({ message: 'Email already in use' });
+            return;
+        }
         const docRef = await db.collection('doctors').add(doctorData)
         res.status(200).send(`Doctor stored with ID ${docRef.id}`)
     } catch (error) {

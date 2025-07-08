@@ -26,6 +26,13 @@ const addNewDoctor = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         createdAt: new Date()
     };
     try {
+        const existingDoctor = yield firebase_1.default.collection('doctors')
+            .where('email', '==', email)
+            .get();
+        if (!existingDoctor.empty) {
+            res.status(400).send({ message: 'Email already in use' });
+            return;
+        }
         const docRef = yield firebase_1.default.collection('doctors').add(doctorData);
         res.status(200).send(`Doctor stored with ID ${docRef.id}`);
     }

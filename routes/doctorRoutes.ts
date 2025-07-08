@@ -8,7 +8,7 @@ import { validateRequest } from '../middleware/validator';
 
 const router = express.Router()
 
-router.post('/doctors', addNewDoctor);
+router.post('/doctors', validateDoctor, validateRequest, addNewDoctor);
 router.post('/login', loginDoctor)
 router.post('/logout', auth, (req: AuthenticatedRequest, res: Response) => {
     res.status(200).send({message: 'Logout succesful'})
