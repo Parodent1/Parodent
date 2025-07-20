@@ -1,9 +1,11 @@
 import Logo from "../../components/logo/Logo"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./signUp.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 function SignUp() {
 const [formData, setFormData] = useState({
@@ -12,6 +14,18 @@ password: "",
 name: "",
 surname: "",
 });
+
+const navigate = useNavigate();
+
+const { isAuthenticated } = useAuth();
+
+useEffect(() => {
+    if (isAuthenticated) {
+    navigate('/schedule');
+    }
+}, [isAuthenticated])
+
+
 const handleChange = (e) => {
 const { name, value } = e.target;
 setFormData((prev) => ({
@@ -30,6 +44,7 @@ try {
     })
 
     const user = response.data;
+    navigate('/login')
     console.log(user)
 } catch (error) {
     

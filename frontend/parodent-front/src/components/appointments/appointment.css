@@ -1,0 +1,37 @@
+.appointmentBody {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    border: 2px solid rgba(137, 206, 255, 1);
+    padding: 0.5em;
+    border-radius: 10px;
+    background-color: rgba(137, 206, 255, 0.2);
+    user-select: none;
+    position: relative; 
+}
+.appointmentHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.clientName,
+.appointmentTime{
+    font-size: 1.8em;
+}
+.appointmentsComplains{
+    width: 50%;
+    flex-wrap: wrap;
+}
+.complaints{
+    font-size: 1.5em;
+}
+.coment {
+    font-size: 1.2em;
+}
+.appointmentsEmoji{
+    margin-right: 1em;
+}

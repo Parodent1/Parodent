@@ -1,0 +1,66 @@
+.emojiDropdownWrapper {
+position: relative;
+display: inline-block;
+}
+
+.emojiToggleBtn {
+font-size: 2em;
+padding: 0.3em 0.5em;
+border-radius: 8px;
+border: 1px solid #ccc;
+background-color: #f3faff;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 0.4rem;
+}
+
+.emojiDropdown {
+position: absolute;
+top: 50%;
+right: 110%;
+transform: translateY(-50%);
+background: #fff;
+border: 1px solid #51a8c4;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+padding: 0.5rem;
+z-index: 999;
+white-space: nowrap;
+}
+
+.emojiList {
+display: flex;
+flex-wrap: nowrap;
+gap: 0.3rem;
+margin-bottom: 0.5rem;
+}
+
+.emojiItem {
+font-size: 2em;
+padding: 0.3em 0.5em;
+border: none;
+background: none;
+cursor: pointer;
+border-radius: 6px;
+transition: background-color 0.2s;
+}
+
+.emojiItem:hover,
+.emojiItem.active {
+background-color: rgba(137, 206, 255, 0.2);
+}
+
+.removeEmojiBtn {
+background-color: #ffdddd;
+border: 1px solid #ff8888;
+padding: 0.4rem;
+border-radius: 6px;
+font-size: 0.9rem;
+width: 100%;
+cursor: pointer;
+}
+
+.removeEmojiBtn:hover {
+background-color: #ffcaca;
+}

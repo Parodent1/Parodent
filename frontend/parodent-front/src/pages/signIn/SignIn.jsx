@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "../signUp/SignUp.css";
 import Logo from "../../components/logo/Logo"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-
+import { useAuth } from "../../context/AuthContext";
 
 
 
@@ -16,6 +17,17 @@ password: "",
 name: "",
 surname: "",
 });
+
+const { checkAuth, isAuthenticated } = useAuth();
+
+useEffect(() => {
+    if (isAuthenticated) {
+    navigate('/schedule');
+    }
+}, [isAuthenticated])
+
+const navigate = useNavigate()
+
 const handleChange = (e) => {
 const { name, value } = e.target;
 setFormData((prev) => ({
@@ -23,21 +35,26 @@ setFormData((prev) => ({
     [name]: value,
 }));
 };
-const handleSubmit = async(e) => {
+const handleSubmit = async (e) => {
 e.preventDefault();
-    try {
-        const response = await axios.post('http://localhost:3000/api/login', {
-            email: formData.email,
-            password: formData.password
-        })
+try {
+    const response = await axios.post('http://localhost:3000/api/login', {
+    email: formData.email,
+    password: formData.password,
+    });
 
-        const token = response.data.token
-        localStorage.setItem('token', token)
-        console.log('Login successful! Token: ' + token)
-    } catch (error) {
-        console.error("Login failed:", error.response?.data || error.message);
-    }
+    const token = response.data.token;
+    localStorage.setItem('token', token);
+    console.log('Login successful! Token:', token);
+
+    await checkAuth()
+    navigate('/schedule');
+} catch (error) {
+    console.error("Login failed:", error.response?.data || error.message);
+}
 };
+
+
 return (
 <div className="body">
     <div className="content">

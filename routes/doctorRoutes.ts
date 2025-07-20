@@ -5,6 +5,8 @@ import { auth, AuthenticatedRequest } from '../middleware/auth';
 import { Request, Response } from 'express';
 import { validateDoctor } from '../validators/doctorValidators';
 import { validateRequest } from '../middleware/validator';
+import { getCurrentDoctor } from '../controllers/currentDoctorLogo';
+import { getInfoDoctor } from '../controllers/currentDoctorAll';
 
 const router = express.Router()
 
@@ -14,5 +16,9 @@ router.post('/logout', auth, (req: AuthenticatedRequest, res: Response) => {
     res.status(200).send({message: 'Logout succesful'})
 })
 
+//Returns only firstname and lastname for front
+router.get('/doctor/logo', auth, getCurrentDoctor)
 
+//Returns all information about the doctor 
+router.get('/doctor/me', auth, getInfoDoctor)
 export default router

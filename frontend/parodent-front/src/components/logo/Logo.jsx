@@ -3,11 +3,11 @@ import './logo.css'
 
 function Logo() {
 return (
-<div className='logoBody'>
-    <h1 className='logoText mainLetter'>pa</h1>
-    <h1 className='logoText'>ro</h1>
-    <h1 className='logoText'>de</h1>
-    <h1 className='logoText'>nt</h1>
+<div className='LogoContentBody'>
+    <h1 className='logoContentText mainContentLetter'>pa</h1>
+    <h1 className='logoContentText'>ro</h1>
+    <h1 className='logoContentText'>de</h1>
+    <h1 className='logoContentText'>nt</h1>
 </div>
 )
 }
