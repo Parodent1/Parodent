@@ -1,27 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 .LogoContentBody {
-height: fit-content;
-display: flex;
-flex-direction: column;
-position: absolute;
-align-items: start;
-top: 0;
-left: 0;
-width: 9%;
-font-size: 3em;
-margin: .2em;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: start;
+  top: 0;
+  left: 0;
+  width: 9%;
+  font-size: 3em;
+  margin: 0.2em;
 }
 .logoContentText {
-    width: 100%;
-text-transform: uppercase;
-height: fit-content;
-text-align: center;
-font-size: 3.5em;
-font-family: "Inter", sans-serif;
-display: flex;
-justify-content: start;
-color: #000000;
+  width: 100%;
+  text-transform: uppercase;
+  height: fit-content;
+  text-align: center;
+  font-size: 3.5em;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  justify-content: start;
+  color: #000000;
 }
 .mainContentLetter {
-color: #ff5858;
+  color: #ff5858;
 }

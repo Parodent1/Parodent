@@ -44,4 +44,157 @@
     width: 3.5em;
     border-radius: 50%;
     background-color: black;
+    cursor: pointer;
+}
+.appointmentCreationBody {
+    position: fixed; /* краще ніж absolute для модалок */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.473);
+}
+
+.appointmentCreationContent {
+    display: flex;
+    gap: 0.5em;
+    padding: 1.5em;/* Ось тут була помилка: замінено з , на solid */
+    width: 50%;
+    height: fit-content;
+    background-color: #ededed;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+.appointmentCreationLeft{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5em;
+    height: fit-content;
+}
+.PIB{
+    font-size: 1.5em;
+    padding: .5em;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.dateButton{
+    display: flex;
+    gap: .5em;
+    width: 100%;
+    height: fit-content;
+}
+.dateButton button{
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    padding: .5em;
+    height: fit-content;
+    background-color: white;
+    cursor: pointer;
+}
+.checkboxContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    padding: .5em 0;
+}
+.checkBox{
+    transform: scale(1.5);
+    margin-right: 0.5em;
+}
+.checkboxContainer label{
+    font-size: .9em;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.birthContainer{
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    gap: .5em;
+}
+.birthContainer button{
+    border: 1px solid black;
+    width: 100%;
+    font-size: 1em;
+    border-radius: 5px;
+    font-weight: 600;
+    padding: .5em;
+    height: fit-content;
+    background-color: white;
+    width: 100%;
+    cursor: pointer;
+}
+.appointmentComent,
+.alergy{
+    width: 100%;
+    border-radius: 5px;
+    padding: .5em;
+    font-size: 1em;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.contacts{
+    width: 100%;
+    display: flex;
+    gap: .5em;
+    font-size: 1em;
+}
+.number{
+    width: fit-content;
+    padding: .5em;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 1em;
+    cursor: pointer;
+}
+.stat{
+    width: 70%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: .5em;
+    font-size: 1em;
+    cursor: pointer;
+}
+.appointmentCreationRight{
+    width: 50%;
+    display: flex;
+    gap: .5em;
+    flex-direction: column;
+}
+.appointmentCreationRight textarea{
+    width: 100%;
+    height: 90%;
+    resize: none;
+    border-radius: 10px; 
+    padding: .5em;
+    font-size: 1.5em;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.createAppointmentBTN{
+    font-size: 1.5em;
+    font-weight: 600;
+    padding: .5em;
+    background: transparent;
+    color: #5cb800;
+    border: 2px solid #5cb800;
+    border-radius: 10px;
+    box-shadow: none;
+    cursor: pointer;
 }
