@@ -58,7 +58,7 @@ return (
     </div>
     <div className="signUpInputContainer">
         <h1>реєстрація</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="loginCover">
         <input
         className="signUpInput"
         type="email"

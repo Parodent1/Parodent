@@ -1,99 +1,95 @@
 import React, { useState, useEffect } from "react";
 
 import "../signUp/SignUp.css";
-import Logo from "../../components/logo/Logo"
+import Logo from "../../components/logo/Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 
-
-
 function SignIn() {
-const [formData, setFormData] = useState({
-email: "",
-password: "",
-name: "",
-surname: "",
-});
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    name: "",
+    surname: "",
+  });
 
-const { checkAuth, isAuthenticated } = useAuth();
+  const { checkAuth, isAuthenticated } = useAuth();
 
-useEffect(() => {
+  useEffect(() => {
     if (isAuthenticated) {
-    navigate('/schedule');
+      navigate("/schedule");
     }
-}, [isAuthenticated])
+  }, [isAuthenticated]);
 
-const navigate = useNavigate()
+  const navigate = useNavigate();
 
-const handleChange = (e) => {
-const { name, value } = e.target;
-setFormData((prev) => ({
-    ...prev,
-    [name]: value,
-}));
-};
-const handleSubmit = async (e) => {
-e.preventDefault();
-try {
-    const response = await axios.post('http://localhost:3000/api/login', {
-    email: formData.email,
-    password: formData.password,
-    });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:3000/api/login", {
+        email: formData.email,
+        password: formData.password,
+      });
 
-    const token = response.data.token;
-    localStorage.setItem('token', token);
-    console.log('Login successful! Token:', token);
+      const token = response.data.token;
+      localStorage.setItem("token", token);
+      console.log("Login successful! Token:", token);
 
-    await checkAuth()
-    navigate('/schedule');
-} catch (error) {
-    console.error("Login failed:", error.response?.data || error.message);
-}
-};
+      await checkAuth();
+      navigate("/schedule");
+    } catch (error) {
+      console.error("Login failed:", error.response?.data || error.message);
+    }
+  };
 
-
-return (
-<div className="body">
-    <div className="content">
-    <div className="logoContainer">
-        <Logo />
-    </div>
-    <div className="signUpInputContainer">
-        <h1>вхід</h1>
-        <form onSubmit={handleSubmit}>
-        <input
-        className="signUpInput"
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-    />
-    <input
-        className="signUpInput"
-        type="password"
-        name="password"
-        placeholder="Пароль"
-        value={formData.password}
-        onChange={handleChange}
-        required
-    />
-
-        <div className="signUpBTNContainer">
-        <button className="signUpInputBTN">вхід</button>
-        
-        <FontAwesomeIcon className="googleLogo" icon={faGoogle} />
+  return (
+    <div className="body">
+      <div className="content">
+        <div className="logoContainer">
+          <Logo />
         </div>
-        </form>
-        
+        <div className="signUpInputContainer">
+          <h1>вхід</h1>
+          <form onSubmit={handleSubmit} className="loginCover">
+            <input
+              className="signUpInput"
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              className="signUpInput"
+              type="password"
+              name="password"
+              placeholder="Пароль"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+
+            <div className="signUpBTNContainer">
+              <button className="signUpInputBTN">вхід</button>
+
+              <FontAwesomeIcon className="googleLogo" icon={faGoogle} />
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    </div>
-</div>
-);
+  );
 }
 
 export default SignIn;

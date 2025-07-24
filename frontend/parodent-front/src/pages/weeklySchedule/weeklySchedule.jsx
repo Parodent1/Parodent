@@ -7,6 +7,16 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
 
 function WeeklySchedule() {
+    const rooms = [
+        { id: 1, doctor: "Тодосюк Д.Є.", assistant: "Кравчук І.В." },
+        { id: 2, doctor: "Коваленко А.О.", assistant: "Мельник А.М." },
+        { id: 3, doctor: "Сидоренко Н.К.", assistant: "Романюк О.С." },
+        { id: 4, doctor: "Іванов І.О.", assistant: "Шевчук Т.В." },
+        { id: 5, doctor: "Петренко С.В.", assistant: "Бондар О.М." },
+        { id: 6, doctor: "Дяченко М.С.", assistant: "Григоренко Ю.І." },
+        { id: 7, doctor: "Гончар О.Л.", assistant: "Олійник І.С." },
+        { id: 8, doctor: "Жук Т.П.", assistant: "Савчук Л.П." },
+      ];
 
 const { logout } = useAuth()
 const navigate = useNavigate()
@@ -20,79 +30,27 @@ return (
     <Logo/>
     <NavBar />
     <div className="weeklyScheduleContent">
-    <div className="dailyBox monday">
-        <div className="scheduleDate">
-        <h1>понеділок</h1>
-        <h1>01.12</h1>
-        </div>
-        <div className="appointmentBox">  
-        <Appointment/>        
-        <Appointment/>        
-        <Appointment/>        
-        <Appointment/>        
-        <Appointment/>        
-        <Appointment/>        
-        <Appointment/>        
-        <Appointment/>        
-        <Appointment/>        
-        <Appointment/>        
-        </div>
-        <div className="dayStuff">
-        <div><h1>лікар:</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        <div><h1>асистент:</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        </div>
+    {rooms.map((room) => (
+          <div className="room" key={room.id}>
+            <h1 className="roomName">Кабінет {room.id}</h1>
+            <div className="appointmentContainer">
+                <Appointment/>
+                <Appointment/>
+                <Appointment/>
+                <Appointment/>
+                <Appointment/>
+                <Appointment/>
+                <Appointment/>
+                <Appointment/>
+            </div>
+            <div className="roomPersonal">
+              <h1><span>Лікар</span>: {room.doctor}</h1>
+              <h1><span>Асистент</span>: {room.assistant}</h1>
+            </div>
+          </div>
+        ))}
     </div>
-    <div className="dailyBox tuesday">
-    <div className="scheduleDate">
-        <h1>вівторок</h1>
-        <h1>01.12</h1>
-        </div>
-        <div className="dayStuff">
-        <div><h1>лікар</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        <div><h1>асистент</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        </div>
-    </div>
-    <div className="dailyBox wednesday">
-    <div className="scheduleDate">
-        <h1>середа</h1>
-        <h1>01.12</h1>
-        </div>
-        <div className="dayStuff">
-        <div><h1>лікар:</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        <div><h1>асистент:</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        </div>
-    </div>
-    <div className="dailyBox thursday">
-    <div className="scheduleDate">
-        <h1>четвер</h1>
-        <h1>01.12</h1>
-        </div>
-        <div className="dayStuff">
-        <div><h1>лікар</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        <div><h1>асистент</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        </div>
-    </div>
-    <div className="dailyBox friday">
-    <div className="scheduleDate">
-        <h1>п'ятниця</h1>
-        <h1>01.12</h1>
-        </div>
-        <div className="dayStuff">
-        <div><h1>лікар</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        <div><h1>асистент</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        </div>
-    </div>
-    <div className="dailyBox saturday">
-    <div className="scheduleDate">
-        <h1>субота</h1>
-        <h1>01.12</h1>
-        </div>
-        <div className="dayStuff">
-        <div><h1>лікар</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        <div><h1>асистент</h1><h1 className="dayStuffName">Тодосюк Данило</h1></div>
-        </div>
-    </div>
-    </div>
+        
     <button className="logOutBtn" onClick={handleLogout}>Log Out</button>
 </div>
 );
