@@ -7,14 +7,16 @@ position: absolute;
 align-items: start;
 top: 0;
 left: 0;
-width: 10%;
+width: 9%;
 font-size: 3em;
-padding-left: 1em;
+margin: .2em;
 }
 .logoContentText {
+    width: 100%;
 text-transform: uppercase;
 height: fit-content;
-font-size: 3em;
+text-align: center;
+font-size: 3.5em;
 font-family: "Inter", sans-serif;
 display: flex;
 justify-content: start;
