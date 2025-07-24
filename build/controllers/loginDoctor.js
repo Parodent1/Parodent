@@ -43,7 +43,11 @@ const loginDoctor = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             id: doctorDoc.id,
             email: doctor.email
         }, JWT_SECRET, { expiresIn: '7h' });
-        res.status(200).json({ token });
+        res.status(200).send({ token, doctor: {
+                firstname: doctor.firstname,
+                lastname: doctor.lastname,
+                email: doctor.email
+            } });
     }
     catch (error) {
         res.status(500).send('Login failed' + error);
