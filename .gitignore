@@ -8,4 +8,6 @@ build/secrets/
 .parodent*
 secrets/
 build/secrets/
+node_modules
+frontend/parodent-front/node_modules
 .env
