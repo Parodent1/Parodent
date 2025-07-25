@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import MobilePicker from 'react-mobile-picker-scroll';
 import './navBar.css'
 import { useAuth } from '../../context/AuthContext'
+import axios from 'axios';
 
 function NavBar() {
     const [showPopup, setShowPopup] = useState(false);
@@ -17,6 +18,31 @@ function NavBar() {
     const [complaints, setComplaints] = useState("");
 
     const {user , isAuthenticated } = useAuth();
+
+    const handleCreateAppointment = async() => {
+        const token = localStorage.getItem('token')
+        const appointmentData = {
+            date: '2025-07-26', 
+            time: '10:00',      
+            patientName: name,
+            cabinet: 1,         
+            comment,
+            doctorName: user?.firstname + ' ' + user?.lastname,
+        }
+        try {
+            const res = await axios.post('http://localhost:3000/api/createapp',
+                appointmentData, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
+            console.log('Appointment created:' , res.data)
+            setShowPopup(false)
+        } catch (error) {
+            console.error('Failed to create appointment:', error)
+        }
+    }
 
     return (
     <div className='navbarBody'>
@@ -142,19 +168,7 @@ function NavBar() {
               />
               <button
                 className="createAppointmentBTN"
-                onClick={() => {
-                  console.log({
-                    name,
-                    gender,
-                    notifications,
-                    comment,
-                    alergy,
-                    phone,
-                    source,
-                    complaints,
-                  });
-                  setShowPopup(false);
-                }}
+                onClick={handleCreateAppointment}
               >
                 Створити запис
               </button>

@@ -28,9 +28,7 @@ export const getAppointments = async(req: AuthenticatedRequest, res: Response) =
         })
 
         Object.keys(appointmentsByCabinet).forEach(cabinet => {
-            appointmentsByCabinet[cabinet].sort((a, b) => {
-                return dayjs(b.time, 'HH:mm').unix() - dayjs(a.time, 'HH:mm').unix()
-            })
+            appointmentsByCabinet[cabinet].sort((a, b) => a.time.localeCompare(b.time))
         })
         res.status(200).send(appointmentsByCabinet)
     } catch (error) {

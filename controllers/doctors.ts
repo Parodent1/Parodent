@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs'
 
 export const addNewDoctor = async (req: Request, res: Response): Promise<void> => {
 
-    const { email, password , firstname, lastname } = req.body
+    const { email, password , firstname, lastname, phoneNumber, cabinetNumber } = req.body
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -13,6 +13,8 @@ export const addNewDoctor = async (req: Request, res: Response): Promise<void> =
         password: hashedPassword,
         firstname,
         lastname,
+        phoneNumber,
+        cabinetNumber,
         createdAt: new Date()
     }
 
