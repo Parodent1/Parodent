@@ -6,70 +6,55 @@ padding-top: 10vh;
 font-family: "Inter", sans-serif;
 }
 .weeklyScheduleContent {
-height: 88vh;
-width: 88%;
-position: absolute;
-right: 0;
-margin: 0.5em;
-display: flex;
-gap: 0.5em;
-flex-wrap: wrap;
-
-}
-.dailyBox {
-width: 32.8%;
-height: 49%;
-position: relative;
-border: 1px solid black;
-border-radius: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-.appointmentBox{
-display: flex;
-flex-wrap: wrap;
-gap: .2em;
-gap: .2em;
-height: 90%;
-width: 98%;
-overflow: scroll;
-mask-image: linear-gradient(to bottom, transparent, black 1%, black 99%, transparent);
--webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 99%, transparent);
-}
-
-.scheduleDate {
-display: flex;
-justify-content: space-between;
-padding: .5em 1em;
-font-size: .5em;
-text-transform: uppercase;
-position: absolute;
-top: 0;
-width: 100%;
-}
-
-.dayStuff{
-font-size: .6em;
-position: absolute;
-bottom: 0;
-width: 100%;
-padding: 0 1em ;
-display: flex;
-justify-content: space-between;
-}
-.dayStuff div{
-display: flex;
-}
-.dayStuffName{
-color: rgba(0, 0, 0, .5);
-}
+    height: 90vh;
+    width: 90%;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0.5em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-template-rows: repeat(2, auto); 
+    gap: .5em;
+  }
+  
+  .room {
+    border-radius: 10px;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 .5em;
+    height: 44.6vh;
+  }
+  .roomName{
+    font-size: 1.5em;
+    width: 100%;
+    height: 5%;
+  }
+  .appointmentContainer{
+    width: 100%;
+    height: 90%;
+    overflow-y: scroll;
+  }
+  .roomPersonal{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .roomPersonal h1{
+    font-size: 1.5em;
+  }
+  .roomPersonal h1 span{
+    color: grey;
+  }
 .logOutBtn {
 border: 2px solid #ff5858;
 color: #ff5858;
 padding: 1em 2em;
 font-weight: 600;
-width: 10%;
+width: 9%;
 margin: 0.5em;
 font-size: 1em;
 background: transparent;
