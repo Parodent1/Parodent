@@ -7,9 +7,22 @@ import './App.css'
 
 
 function PrivateRoute({children}) {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
 
+  if(loading){
+    return <div>Loading...</div>
+  }
   return isAuthenticated ? children : <Navigate to="/login"/>
+}
+
+function DefaultRoute() {
+  const {isAuthenticated, loading } = useAuth()
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  return isAuthenticated ? <Navigate to="/schedule"/> : <Navigate to="/login"/>
 }
 
 function App() {
@@ -19,6 +32,7 @@ function App() {
     <Router>
     <div className="appBody">
       <Routes>
+      <Route path="/" element={<DefaultRoute/>}/>
       <Route path='/login' element={<SignIn/>}/>
       <Route path='/register' element={<SignUp/>}/>
       <Route 

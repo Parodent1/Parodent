@@ -32,9 +32,7 @@ const getAppointments = (req, res) => __awaiter(void 0, void 0, void 0, function
             appointmentsByCabinet[cabinet].push(Object.assign({ id: doc.id }, data));
         });
         Object.keys(appointmentsByCabinet).forEach(cabinet => {
-            appointmentsByCabinet[cabinet].sort((a, b) => {
-                return (0, dayjs_1.default)(b.time, 'HH:mm').unix() - (0, dayjs_1.default)(a.time, 'HH:mm').unix();
-            });
+            appointmentsByCabinet[cabinet].sort((a, b) => a.time.localeCompare(b.time));
         });
         res.status(200).send(appointmentsByCabinet);
     }
