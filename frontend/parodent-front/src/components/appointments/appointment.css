@@ -20,17 +20,17 @@ justify-content: space-between;
 }
 .clientName,
 .appointmentTime{
-    font-size: 1.8em;
+    font-size: 1em;
 }
 .appointmentsComplains{
     width: 50%;
     flex-wrap: wrap;
 }
 .complaints{
-    font-size: 1.5em;
+    font-size: .8em;
 }
 .coment {
-    font-size: 1.2em;
+    font-size: .8em;
 }
 .appointmentsEmoji{
     margin-right: 1em;

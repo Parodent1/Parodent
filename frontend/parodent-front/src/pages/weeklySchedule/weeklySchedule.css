@@ -28,7 +28,7 @@ font-family: "Inter", sans-serif;
     height: 44.6vh;
   }
   .roomName{
-    font-size: 1.5em;
+    font-size: 1em;
     width: 100%;
     height: 5%;
   }
@@ -44,7 +44,7 @@ font-family: "Inter", sans-serif;
     justify-content: space-between;
   }
   .roomPersonal h1{
-    font-size: 1.5em;
+    font-size: 1em;
   }
   .roomPersonal h1 span{
     color: grey;
