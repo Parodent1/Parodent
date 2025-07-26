@@ -31,6 +31,60 @@
     font-size: 1em;
     gap: 0.5em;
 }
+.navCBtn{
+    display: flex;
+    align-items: center;
+}
+.calendarBody{    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.473);
+}
+.calendarContent{
+    background-color: white;
+    padding: .5em;
+    border-radius: 10px;
+    align-content: center;
+    height: fit-content;
+    width: fit-content;
+}
+.calendarHeader{
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+}
+.calendarHeader h2{
+    width: 60%;
+    text-align: center;
+}
+.calendarHeader button{
+    background-color: transparent;
+    border: none;
+}
+.calendarGrid {
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 днів у тижні */
+    gap: 0.5em;
+  }
+  .calendarDay {
+    aspect-ratio: 1/1;
+    border: 1px solid #ccc;
+    padding: .2em;
+    height: 3em;
+    text-align: center;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    font-weight: bold;
+    cursor: pointer;
+    align-content: center;
+  }
 .navRBtn{
     width: 50%;
     display: flex;
@@ -47,7 +101,7 @@
     cursor: pointer;
 }
 .appointmentCreationBody {
-    position: fixed; /* краще ніж absolute для модалок */
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
