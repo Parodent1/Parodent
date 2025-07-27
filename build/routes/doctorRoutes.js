@@ -13,6 +13,7 @@ const currentDoctorLogo_1 = require("../controllers/currentDoctorLogo");
 const currentDoctorAll_1 = require("../controllers/currentDoctorAll");
 const addDoctorPhoto_1 = require("../controllers/addDoctorPhoto");
 const upload_1 = __importDefault(require("../middleware/upload"));
+const getDoctorPhoto_1 = require("../controllers/getDoctorPhoto");
 const router = express_1.default.Router();
 router.post('/doctors', doctorValidators_1.validateDoctor, validator_1.validateRequest, doctors_1.addNewDoctor);
 router.post('/login', loginDoctor_1.loginDoctor);
@@ -25,4 +26,6 @@ router.get('/doctor/logo', auth_1.auth, currentDoctorLogo_1.getCurrentDoctor);
 router.get('/doctor/me', auth_1.auth, currentDoctorAll_1.getInfoDoctor);
 //Sets photo for doctor
 router.post('/doctor/photo', auth_1.auth, upload_1.default.single('photo'), addDoctorPhoto_1.addPhoto);
+//Return photo of the doctor 
+router.get('/doctor/photo/me', auth_1.auth, getDoctorPhoto_1.getDoctorPhoto);
 exports.default = router;
