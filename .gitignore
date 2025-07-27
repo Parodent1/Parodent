@@ -10,4 +10,5 @@ secrets/
 build/secrets/
 node_modules
 frontend/parodent-front/node_modules
+cloudinary.ts
 .env

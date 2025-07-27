@@ -9,7 +9,7 @@ const serviceAccountPath = path.resolve(__dirname, '..', process.env.FIREBASE_KE
 
 
 admin.initializeApp({
-    credential: admin.credential.cert(require(serviceAccountPath))
+    credential: admin.credential.cert(require(serviceAccountPath)),
 });
 
 const db = admin.firestore()

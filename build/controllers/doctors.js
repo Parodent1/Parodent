@@ -16,15 +16,7 @@ exports.addNewDoctor = void 0;
 const firebase_1 = __importDefault(require("../firebase/firebase"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const addNewDoctor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { email, password, firstname, lastname } = req.body;
-    const hashedPassword = yield bcryptjs_1.default.hash(password, 10);
-    const doctorData = {
-        email,
-        password: hashedPassword,
-        firstname,
-        lastname,
-        createdAt: new Date()
-    };
+    const { email, password, firstname, lastname, phoneNumber, cabinetNumber } = req.body;
     try {
         const existingDoctor = yield firebase_1.default.collection('doctors')
             .where('email', '==', email)
@@ -33,6 +25,16 @@ const addNewDoctor = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             res.status(400).send({ message: 'Email already in use' });
             return;
         }
+        const hashedPassword = yield bcryptjs_1.default.hash(password, 10);
+        const doctorData = {
+            email,
+            password: hashedPassword,
+            firstname,
+            lastname,
+            phoneNumber,
+            cabinetNumber,
+            createdAt: new Date()
+        };
         const docRef = yield firebase_1.default.collection('doctors').add(doctorData);
         res.status(200).send(`Doctor stored with ID ${docRef.id}`);
     }

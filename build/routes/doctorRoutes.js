@@ -11,6 +11,8 @@ const doctorValidators_1 = require("../validators/doctorValidators");
 const validator_1 = require("../middleware/validator");
 const currentDoctorLogo_1 = require("../controllers/currentDoctorLogo");
 const currentDoctorAll_1 = require("../controllers/currentDoctorAll");
+const addDoctorPhoto_1 = require("../controllers/addDoctorPhoto");
+const upload_1 = __importDefault(require("../middleware/upload"));
 const router = express_1.default.Router();
 router.post('/doctors', doctorValidators_1.validateDoctor, validator_1.validateRequest, doctors_1.addNewDoctor);
 router.post('/login', loginDoctor_1.loginDoctor);
@@ -21,4 +23,6 @@ router.post('/logout', auth_1.auth, (req, res) => {
 router.get('/doctor/logo', auth_1.auth, currentDoctorLogo_1.getCurrentDoctor);
 //Returns all information about the doctor 
 router.get('/doctor/me', auth_1.auth, currentDoctorAll_1.getInfoDoctor);
+//Sets photo for doctor
+router.post('/doctor/photo', auth_1.auth, upload_1.default.single('photo'), addDoctorPhoto_1.addPhoto);
 exports.default = router;
