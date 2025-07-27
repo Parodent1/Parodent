@@ -12,5 +12,9 @@ exports.validateDoctor = [
     (0, express_validator_1.body)('firstname')
         .notEmpty().withMessage('First name is required'),
     (0, express_validator_1.body)('lastname')
-        .notEmpty().withMessage('Last name is required')
+        .notEmpty().withMessage('Last name is required'),
+    (0, express_validator_1.body)('phoneNumber')
+        .matches(/^\+380\d{9}$/).withMessage('Phone number must start with +380 and contain 9 digits after it'),
+    (0, express_validator_1.body)('cabinetNumber')
+        .isInt({ min: 1, max: 8 }).withMessage('Cabinet number must be a number between 1 and 49')
 ];

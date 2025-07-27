@@ -12,32 +12,27 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addNewPatient = void 0;
+exports.addPhoto = void 0;
 const firebase_1 = __importDefault(require("../firebase/firebase"));
-const addNewPatient = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { firstname, lastname, phone, birth, email } = req.body;
-    const patientData = {
-        firstname,
-        lastname,
-        phone,
-        birth,
-        email,
-        createdAt: new Date(),
-    };
+const addPhoto = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    const doctorId = (_a = req.user) === null || _a === void 0 ? void 0 : _a.id;
+    const file = req.file;
+    if (!doctorId) {
+        res.status(401).send({ error: "Please login" });
+        return;
+    }
+    if (!file || !file.path) {
+        res.status(400).send({ error: 'No photo uploaded' });
+        return;
+    }
     try {
-        const existingPatient = yield firebase_1.default
-            .collection('patients')
-            .where('email', '==', email)
-            .get();
-        if (!existingPatient.empty) {
-            res.status(400).send({ message: 'Email already in use' });
-            return;
-        }
-        const docRef = yield firebase_1.default.collection('patients').add(patientData);
-        res.status(200).send(`Patient stored with ID ${docRef.id}`);
+        const photoURL = file.path;
+        yield firebase_1.default.collection('doctors').doc(doctorId).update({ photoURL });
+        res.status(200).send({ message: "Photo updated successfully", photoURL });
     }
     catch (error) {
-        res.status(500).send('Error adding patient: ' + error);
+        res.status(500).send({ error: "Error uploading photo", details: error });
     }
 });
-exports.addNewPatient = addNewPatient;
+exports.addPhoto = addPhoto;
