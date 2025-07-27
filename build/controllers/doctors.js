@@ -16,13 +16,15 @@ exports.addNewDoctor = void 0;
 const firebase_1 = __importDefault(require("../firebase/firebase"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const addNewDoctor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { email, password, firstname, lastname } = req.body;
+    const { email, password, firstname, lastname, phoneNumber, cabinetNumber } = req.body;
     const hashedPassword = yield bcryptjs_1.default.hash(password, 10);
     const doctorData = {
         email,
         password: hashedPassword,
         firstname,
         lastname,
+        phoneNumber,
+        cabinetNumber,
         createdAt: new Date()
     };
     try {

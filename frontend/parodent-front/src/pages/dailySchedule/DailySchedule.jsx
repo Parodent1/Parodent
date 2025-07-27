@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./weeklySchedule.css";
+import "./dailySchedule.css";
 import Logo from "../../components/logo/Logo.jsx";
 import NavBar from "../../components/navBar/NavBar.jsx";
 import Appointment from "../../components/appointments/Appointment.jsx";
@@ -19,12 +19,13 @@ function WeeklySchedule() {
         { id: 8, doctor: "Жук Т.П.", assistant: "Савчук Л.П." },
       ];
 
-const { logout, user } = useAuth()
+
 const navigate = useNavigate()
 const [appointments, setAppointments] = useState({})
 
 const token = localStorage.getItem('token')
 
+const { logout, user } = useAuth()
 const handleLogout = () => {
     logout()
     navigate('/login')
@@ -66,7 +67,6 @@ return (
           </div>
         ))}
     </div>
-        
     <button className="logOutBtn" onClick={handleLogout}>Log Out</button>
 </div>
 );

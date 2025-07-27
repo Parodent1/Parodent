@@ -15,19 +15,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.addNewPatient = void 0;
 const firebase_1 = __importDefault(require("../firebase/firebase"));
 const addNewPatient = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { firstname, lastname, phone, birth, email } = req.body;
     const patientData = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        phone: req.body.phone,
-        birth: req.body.birth,
-        createdAt: new Date()
+        firstname,
+        lastname,
+        phone,
+        birth,
+        email,
+        createdAt: new Date(),
     };
     try {
+        const existingPatient = yield firebase_1.default
+            .collection('patients')
+            .where('email', '==', email)
+            .get();
+        if (!existingPatient.empty) {
+            res.status(400).send({ message: 'Email already in use' });
+            return;
+        }
         const docRef = yield firebase_1.default.collection('patients').add(patientData);
         res.status(200).send(`Patient stored with ID ${docRef.id}`);
     }
     catch (error) {
-        res.status(500).send("Error adding patient" + error);
+        res.status(500).send('Error adding patient: ' + error);
     }
 });
 exports.addNewPatient = addNewPatient;

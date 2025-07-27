@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from "react";
-import MobilePicker from "react-mobile-picker-scroll";
 import "./navBar.css";
 import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function NavBar() {
     const today = new Date();
@@ -73,9 +73,9 @@ function NavBar() {
   return (
     <div className="navbarBody">
       <div className="navLBtn">
-        <button className="navBtn">всі пацієнти</button>
-        <button className="navBtn">персонал</button>
-        <button className="navBtn">календар</button>
+        <Link className="navBtn" to='/monthlySchedule'>календар</Link>
+        <Link className="navBtn" to='/allStuff'>персонал</Link>
+        <Link className="navBtn" to='/monthlySchedule'>всі пацієнти</Link>
       </div>
       <div className="navCBtn">
         <button className="navBtn" onClick={handleCalendar}>
