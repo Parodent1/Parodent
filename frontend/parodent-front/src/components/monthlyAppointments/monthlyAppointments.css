@@ -1,0 +1,11 @@
+.monthlyAppointmentsBody{
+    border: 2px solid rgba(137, 206, 255, 1);
+    background-color: rgba(137, 206, 255, 0.2);
+    border-radius: 10px;
+    width: fit-content;
+    margin: .2em;
+    cursor: pointer;
+}
+.monthlyAppointmentTime{
+    font-size: .7em;   
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./weeklySchedule.css";
+import "./dailySchedule.css";
 import Logo from "../../components/logo/Logo.jsx";
 import NavBar from "../../components/navBar/NavBar.jsx";
 import Appointment from "../../components/appointments/Appointment.jsx";
@@ -23,8 +23,6 @@ function WeeklySchedule() {
     const navigate = useNavigate();
     const [appointments, setAppointments] = useState({});
 
-    const token = localStorage.getItem('token');
-
     const handleLogout = () => {
         logout();
         navigate('/login');
@@ -32,6 +30,7 @@ function WeeklySchedule() {
 
     const fetchAppointments = async () => {
         try {
+            const token = localStorage.getItem('token');
             const response = await axios.get('http://localhost:3000/api/appointments', {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -67,7 +66,6 @@ function WeeklySchedule() {
                     </div>
                 ))}
             </div>
-
             <button className="logOutBtn" onClick={handleLogout}>Log Out</button>
         </div>
     );

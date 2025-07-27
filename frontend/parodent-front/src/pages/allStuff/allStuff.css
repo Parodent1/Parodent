@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+.allStuffBody {
+height: 100vh;
+position: relative;
+padding-top: 10vh;
+font-family: "Inter", sans-serif;
+}
+.allStuffContent {
+    height: 90vh;
+    width: 90%;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0.5em;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+  }
+  .allStuffListHeader, .allStuffListItems {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr 2fr;
+  }
+  .allStuffListHeader{
+    width: 89.9%;
+    position: fixed;
+    background-color: white;
+    border-radius: 10px;
+    height: 3em;
+    font-size: .8em;
+  }
+  .headerItems{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+  }
+.headerNames{
+    width: 100%;
+}
+.allStuffListItems{
+    margin-top: 2em;
+}
+  .listItem {
+    padding: 0.5em;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.2em;
+    text-align: center;
+    height: 2em;
+  }
+/* .headerNames{ grid-area: 1 / 1 / 2 / 2; }
+.headerRoles{ grid-area: 1 / 2 / 2 / 3; }
+.headerRooms{ grid-area: 1 / 3 / 2 / 4; }
+.headerNumbers{ grid-area: 1 / 4 / 2 / 5; }
+.headerEmails{ grid-area: 1 / 5 / 2 / 6; }
+
+.ItemsNames{ grid-area: 2 / 1 / 3 / 2; }
+.ItemsRoles{ grid-area: 2 / 2 / 3 / 3; }
+.ItemsRooms{ grid-area: 2 / 3 / 3 / 4; }
+.ItemsNumbers{ grid-area: 2 / 4 / 3 / 5; }
+.ItemsEmails{ grid-area: 2 / 5 / 3 / 6; } */
