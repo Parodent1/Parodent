@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 import "../signUp/SignUp.css";
-import Logo from "../../components/logo/Logo";
+import LogoSignIn from '../../components/logoSing/LogoSignIn'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 
@@ -52,11 +53,13 @@ function SignIn() {
     }
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="body">
       <div className="content">
         <div className="logoContainer">
-          <Logo />
+          <LogoSignIn />
         </div>
         <div className="signUpInputContainer">
           <h1>вхід</h1>
@@ -70,15 +73,24 @@ function SignIn() {
               onChange={handleChange}
               required
             />
-            <input
-              className="signUpInput"
-              type="password"
-              name="password"
-              placeholder="Пароль"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
+<div className="passwordContainer">
+  <input
+    className="signUpInput"
+    type={showPassword ? "text" : "password"}
+    name="password"
+    placeholder="Пароль"
+    value={formData.password}
+    onChange={handleChange}
+    required
+  />
+  <button
+    type="button"
+    className="togglePasswordBtn"
+    onClick={() => setShowPassword(!showPassword)}
+  >
+    <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+  </button>
+</div>
 
             <div className="signUpBTNContainer">
               <button className="signUpInputBTN">вхід</button>
