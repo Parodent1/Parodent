@@ -191,4 +191,3 @@ function NavBar({ onAppointmentCreated }) {
 
 export default NavBar;
 
-export default NavBar;
