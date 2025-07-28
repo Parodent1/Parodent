@@ -29,7 +29,7 @@ function DefaultRoute() {
   }
 
   return isAuthenticated ? (
-    <Navigate to="/schedule" />
+    <Navigate to="/dailySchedule" />
   ) : (
     <Navigate to="/login" />
   );

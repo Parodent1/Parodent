@@ -21,7 +21,7 @@ function SignIn() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/schedule");
+      navigate("/dailySchedule");
     }
   }, [isAuthenticated]);
 
@@ -47,7 +47,7 @@ function SignIn() {
       console.log("Login successful! Token:", token);
 
       await checkAuth();
-      navigate("/schedule");
+      navigate("/dailySchedule");
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
     }

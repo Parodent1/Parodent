@@ -1,0 +1,232 @@
+.appointmentCreationBody {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.473);
+}
+
+.appointmentCreationForm{
+    display: flex;
+    gap: 1em;
+    width: 50vw;
+    height: 45vh;
+}
+
+.appointmentCreationContent {
+    display: flex;
+    padding: 1.5em;
+    width: 50vw;
+    height: 50vh;
+    background-color: #ededed;
+    border-radius: 10px;
+}
+
+.appointmentCreationLeft {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.appointmentCreationRight {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.appointmentInputContainer{
+    display: flex;
+    position: relative;
+    width: 100%;
+    padding: 1em;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.appointmentInputContainer label{
+    font-size: .9em;
+    color: black;
+    font-weight: 500;
+    position: absolute;
+    top: .2em;
+    left: 1.5em;
+    padding: 0 0.25rem;
+    background: #f5f5f5;
+    z-index: 1;
+}
+
+.appointmentInputContainer .input,
+.appointmentInputContainer .contacts{
+  width: 100%;
+  padding: 0.75rem 0.75rem;
+  font-size: 1em;
+  border: 2px solid #58b8fd;
+  border-radius: 0.375rem;
+  background: #f5f5f5;
+  color: #333;
+}
+
+.dateButton {
+    display: flex;
+    gap: .5em;
+    width: 100%;
+    height: fit-content;
+}
+
+.dateButton button {
+    border: 1px solid black;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    padding: .5em;
+    height: fit-content;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Checkbox container styles */
+.checkboxContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #f8f9fa;
+  }
+  
+  /* Label styles for both radio and checkbox */
+  .checkboxContainer label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: black;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  /* Custom radio button styles */
+  .checkboxContainer input[type="radio"] {
+    appearance: none;
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 2px solid #58b8fd;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  
+  /* Radio button checked state */
+  .checkboxContainer input[type="radio"]:checked {
+    background-color: #58b8fd;
+    border-color: #58b8fd;
+  }
+  
+  /* Radio button inner dot */
+  .checkboxContainer input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: white;
+    border-radius: 50%;
+  }
+  
+  /* Custom checkbox styles */
+  .checkboxContainer input[type="checkbox"] {
+    appearance: none;
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 2px solid #58b8fd;
+    border-radius: 0.25rem;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  
+  /* Checkbox checked state */
+  .checkboxContainer input[type="checkbox"]:checked {
+    background-color: #58b8fd;
+    border-color: #58b8fd;
+  }
+  
+  /* Checkbox checkmark */
+  .checkboxContainer input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.75rem;
+  }
+  
+  /* Hover states */
+  .checkboxContainer label:hover {
+    color: #343a40;
+    font-weight: 500;
+  }
+  
+  .checkboxContainer label:hover input[type="radio"],
+  .checkboxContainer label:hover input[type="checkbox"] {
+    border-color: #6366F1;
+  }
+  
+  /* Focus states */
+  .checkboxContainer input[type="radio"]:focus,
+  .checkboxContainer input[type="checkbox"]:focus {
+    box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.3);
+  }
+.contacts{
+    display: flex;
+    gap: 1em;
+}
+
+.appointmentInputContainer textarea {
+    width: 100%;
+    height: 34vh;
+    padding: 0.75rem 0.75rem;
+    font-size: 1em;
+    border: 2px solid #58b8fd;
+    border-radius: 0.375rem;
+    background: #f5f5f5;
+    color: #333;
+    resize: none;
+}
+
+.appointmentCreationBtnContainer{
+    width: 100%;
+    padding: 0.75rem 0.75rem;
+    font-size: 1em;
+    border-radius: 10px;
+    background: #f5f5f5;
+}
+
+.createAppointmentBTN {
+    width: 100%;
+    padding: 0.75rem 0.75rem;
+    font-size: 1.3em;
+    border: 3px solid #60c000;
+    border-radius: 0.375rem;
+    background: #f5f5f5;
+    color: #60c000;
+}
