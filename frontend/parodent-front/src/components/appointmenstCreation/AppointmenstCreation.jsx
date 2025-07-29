@@ -39,14 +39,14 @@ function AppointmentCreation({ onClose, onCreateAppointment, doctorName }) {
     }
   };
 
-  const [doctors, setDoctors] = useState([]);
+  // const [doctors, setDoctors] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/doctors")
-      .then((res) => setDoctors(res.data))
-      .catch((err) => console.error(err));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:3000/api/doctors")
+  //     .then((res) => setDoctors(res.data))
+  //     .catch((err) => console.error(err));
+  // }, []);
 
   return (
     <div className="appointmentCreationBody" onClick={onClose}>
@@ -103,7 +103,7 @@ function AppointmentCreation({ onClose, onCreateAppointment, doctorName }) {
             <div className="appointmentInputContainer">
               <label>Коментар</label>
               <input
-                name="coment"
+                name="comment"
                 type="text"
                 className="input"
                 value={formData.comment}
@@ -115,7 +115,9 @@ function AppointmentCreation({ onClose, onCreateAppointment, doctorName }) {
               <input
                 name="alergy"
                 type="text"
-                className="input"
+                className="input alergyInput"
+                placeholder="*Обовязково"
+                maxLength={13}
                 value={formData.alergy}
                 onChange={handleChange}
               />
@@ -132,21 +134,21 @@ function AppointmentCreation({ onClose, onCreateAppointment, doctorName }) {
                 />
               </div>
 
+
               <div className="appointmentInputContainer">
                 <label>Виберіть лікаря</label>
-                <select
+                {/* <select
                   name="source"
                   className="input"
                   value={formData.source}
                   onChange={handleChange}
                 >
-                  <option value=""></option>
                   {doctors.map((doctor) => (
-                    <option key={doctor.id} value={doctor.id}>
+                    <option key={doctor.id} value={doctor.id} className="doctorsList" >
                       {doctor.name}
                     </option>
                   ))}
-                </select>
+                </select> */}
               </div>
             </div>
           </div>

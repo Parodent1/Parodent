@@ -4,7 +4,7 @@ import Calendar from "../calendar/Calendar";
 
 function ManualTimeInput({ onTimeSelect }) {
   const [startTime, setStartTime] = useState("");
-  const [duration, setDuration] = useState("--");
+  const [duration, setDuration] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ function ManualTimeInput({ onTimeSelect }) {
   return (
     <form onSubmit={handleSubmit} className="manualTimeForm">
       {/* Date Picker Field */}
-      <div className="formField">
+      <div className="formField dateFormField">
         <label>Дата</label>
         <button
           type="button"
@@ -46,7 +46,7 @@ function ManualTimeInput({ onTimeSelect }) {
         </button>
 
         {showCalendar && (
-          <div className="calendarDropdown">
+          <div className="timeCalendarCover">
             <Calendar
               setShowCalendar={setShowCalendar}
               onDateSelect={(day, month, year) => {
@@ -58,6 +58,7 @@ function ManualTimeInput({ onTimeSelect }) {
         )}
 
       </div>
+      
 
       {/* Start Time Field */}
       <div className="formField">
@@ -75,6 +76,7 @@ function ManualTimeInput({ onTimeSelect }) {
       <div className="formField">
         <label>Тривалість (хв)</label>
         <input
+        placeholder="--"
           className="input"
           value={duration}
           onChange={(e) => setDuration(e.target.value)}

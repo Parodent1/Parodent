@@ -1,31 +1,21 @@
-@keyframes calendar{
-    from{
-    opacity: 0;
-    }
-    to{
-        opacity: 1;
-        }
-}
-.calendarBody{    
+
+.calendarBody{
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    justify-content: center;
     z-index: 1000;
-    animation: calendar .3s ease-in-out;
+    padding: 0.75rem 0.75rem;
+    font-size: 1em;
+    margin-top: .1em;
 }
 .calendarContent{
     background-color: #ededed;
     padding: .5em;
     border-radius: 10px;
-    margin-top: 8.5vh;
     align-content: center;
-    height: fit-content;
-    width: fit-content;
+    height: 19.7em;
+    width: 26.3em;
+    border: 2px solid #58b8fd;
+    border-radius: 0.375rem;
+    background: #f5f5f5;
 }
 .calendarHeader{
     display: flex;
@@ -50,7 +40,7 @@
     aspect-ratio: 1/1;
     border: 1px solid #ccc;
     padding: .2em;
-    height: 3em;
+    height: 2.7em;
     text-align: center;
     border-radius: 6px;
     background-color: #f9f9f9;

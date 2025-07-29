@@ -21,13 +21,12 @@ function NavBar() {
     try {
       const token = localStorage.getItem("token");
       const appointmentData = {
-        date: selectedDate.toISOString().split('T')[0],
+        date: selectedDate.toISOString().split("T")[0],
         time: formData.timeData?.startTime || "10:00",
         patientName: formData.name,
         cabinet: 1,
         comment: formData.comment,
         doctorName: user?.firstname + " " + user?.lastname,
-        // Додайте інші поля за потреби
       };
 
       const res = await axios.post(
@@ -45,53 +44,65 @@ function NavBar() {
 
   return (
     <div className="navbarBody">
-      <div className="navLBtn">
-        <Link className="navBtn" to='/monthlySchedule'>Календар</Link>
-        <Link className="navBtn" to='/allStuff'>Персонал</Link>
-        <Link className="navBtn" to='/monthlySchedule'>Всі пацієнти</Link>
-      </div>
-      
-      <div className="navCBtn">
-        <button className="navBtn" onClick={() => setShowCalendar(!showCalendar)}>
-          {formatSelectedDate()}
-        </button>
-      </div>
-      
-      <div className="navRBtn">
-        <button 
-          className="navBtn greenBtn" 
-          onClick={() => setShowAppointmentCreation(true)}
-        >
-          Створити запис
-        </button>
-        
-        {isAuthenticated ? (
-          <button className="navBtn">
-            {user.firstname + " " + user.lastname}
+      <div className="navbarContent">
+        <div className="navLBtn">
+          <Link className="navBtn" to="/monthlySchedule">
+            Календар
+          </Link>
+          <Link className="navBtn" to="/allStuff">
+            Персонал
+          </Link>
+          <Link className="navBtn" to="/monthlySchedule">
+            Всі пацієнти
+          </Link>
+        </div>
+
+        <div className="navCBtn">
+          <button
+            className="navBtn navCalendarBtn"
+            onClick={() => setShowCalendar(!showCalendar)}
+          >
+            {formatSelectedDate()}
           </button>
-        ) : (
-          <button className="navBtn">Гість</button>
-        )}
-        
-        <div className="profileLogo"></div>
-        
-        {showCalendar && (
-          <Calendar 
-            setShowCalendar={setShowCalendar}
-            onDateSelect={(day, month, year) => {
-              setSelectedDate(new Date(year, month, day));
-              setShowCalendar(false);
-            }}
-          />
-        )}
-        
-        {showAppointmentCreation && (
-          <AppointmentCreation
-            onClose={() => setShowAppointmentCreation(false)}
-            onCreateAppointment={handleCreateAppointment}
-            doctorName={user?.firstname + " " + user?.lastname}
-          />
-        )}
+          {showCalendar && (
+            <div className="navCalendarCover">
+              <Calendar
+                setShowCalendar={setShowCalendar}
+                onDateSelect={(day, month, year) => {
+                  setSelectedDate(new Date(year, month, day));
+                  setShowCalendar(false);
+                }}
+              />
+            </div>
+          )}
+        </div>
+
+        <div className="navRBtn">
+          <button
+            className="navBtn greenBtn"
+            onClick={() => setShowAppointmentCreation(true)}
+          >
+            Створити запис
+          </button>
+
+          {isAuthenticated ? (
+            <button className="navBtn">
+              {user.firstname + " " + user.lastname}
+            </button>
+          ) : (
+            <button className="navBtn">Гість</button>
+          )}
+
+          <div className="profileLogo"></div>
+
+          {showAppointmentCreation && (
+            <AppointmentCreation
+              onClose={() => setShowAppointmentCreation(false)}
+              onCreateAppointment={handleCreateAppointment}
+              doctorName={user?.firstname + " " + user?.lastname}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
