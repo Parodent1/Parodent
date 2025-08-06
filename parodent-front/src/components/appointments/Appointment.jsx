@@ -12,9 +12,6 @@ function Appointment({ data }) {
   const hadleEditModal = () => {
     setEditModal(!editModal);
   };
-  const handleEmojiChange = (emoji) => {
-    console.log("Обрана емодзі:", emoji);
-  };
   return (
     <div className="allClinicAppointmentBody">
       <div className="appointmentHeader">
@@ -27,12 +24,7 @@ function Appointment({ data }) {
         <div className="appointmentsComments">
           <p className="coment">{data.comment}</p>
         </div>
-        <div className="appointmentsEmoji">
-          <EmojiSelector
-            className="emojiIcon"
-            emojiKey="doctorEmoji"
-            onEmojiChange={handleEmojiChange}
-          />
+        <div className="editButtonBox">
           <span
             class="material-symbols-outlined"
             style={{ color: "#FF5858" }}
@@ -85,6 +77,9 @@ function Appointment({ data }) {
             </div>
           )}
         </div>
+      </div>
+      <div className="appointmentsEmoji">
+        <EmojiSelector className="emojiIcon" emojiKey="doctorEmoji" />
       </div>
     </div>
   );

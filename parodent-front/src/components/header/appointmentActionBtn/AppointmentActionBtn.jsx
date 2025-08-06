@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./appointmentActionBtn.css";
 import Calendar from "./calendar/Calendar";
 import AppointmentCreation from "./appointmenstCreation/AppointmentsCreation";
@@ -19,7 +19,6 @@ function AppointmentActionBtn() {
   const monthStr = String(dateObj.getMonth() + 1).padStart(2, "0");
   return `${dayStr}.${monthStr}.${dateObj.getFullYear()}`;
 };
-
 
 const handleSelectSchedule = (e) => {
   setSelectedTab(e.target.value);

@@ -1,6 +1,7 @@
 
 .allClinicAppointmentBody {
   display: flex;
+  position: relative;
   flex-direction: column;
   width: 98%;
   background-color: var(--grey-color);
@@ -42,7 +43,7 @@
     position: relative;
 }
 
-.appointmentsEmoji span{
+.editButtonBox{
   cursor: pointer;
 }
 
@@ -63,4 +64,11 @@
 
 .editModalBody{
   background-color: var(--white-color);
+}
+
+.appointmentsEmoji{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 1px solid rgb(0, 255, 42);
 }
