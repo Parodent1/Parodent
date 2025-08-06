@@ -28,7 +28,7 @@ const handleSelectSchedule = (e) => {
   const doctors = ["Дмитро Тодосюк", "Андрій Коваленко", "Наталія Сидоренко"];
 
   return (
-    <div className="calendarContainer">
+    <div className="actionBtnBody">
       <div className="calendarContainerContent">
         <button
           className="ActionBtn"

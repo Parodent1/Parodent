@@ -2,10 +2,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from './sections/dashboard/Dashboard';
 import Appointments from './sections/appointments/Appointments';
 import Patients from './sections/patients/Patients';
-import Stuff from './sections/stuff/Stuff';
+import Staff from './sections/staff/Staff';
 import { useAuth } from "../../context/AuthContext";
-import SignIn from "../authPages/login/Login";
-import Login from '../authPages/login/Login'
+import LogIn from "../authPages/login/Login";
 
 import PrivateRoute from "../../../privateRoute";
 
@@ -26,7 +25,7 @@ function Content() {
     <div className='contentBody'>
       <Routes>
         <Route path='/' element={<DefaultRoute />} />
-        <Route path="/login" element={<SignIn/>} />
+        <Route path="/login" element={<LogIn/>} />
 
         <Route path='/appointments' element={
           <PrivateRoute>
@@ -46,9 +45,9 @@ function Content() {
           </PrivateRoute>
         } />
 
-        <Route path='/stuff' element={
+        <Route path='/staff' element={
           <PrivateRoute>
-            <Stuff />
+            <Staff />
           </PrivateRoute>
         } />
       </Routes>

@@ -1,15 +1,11 @@
-import { useState , useEffect, useCallback} from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./appointmenstCreation.css";
 import TimeInput from "./timeInput/TimeInput";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faComment } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import dayjs from "dayjs";
 import { useAppointments } from "../../../../context/AppointmentContext";
 
-function AppointmentCreation({
-  setShowAppointmentCreation
-}) {
+function AppointmentCreation({ setShowAppointmentCreation }) {
   const [formData, setFormData] = useState({
     name: "",
     comment: "",
@@ -22,18 +18,19 @@ function AppointmentCreation({
   const { fetchAppointments } = useAppointments();
 
   useEffect(() => {
-    const fetchDoctors = async() => {
+    const fetchDoctors = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/apiDoctor/allDoctors");
+        const res = await axios.get(
+          "http://localhost:3000/apiDoctor/allDoctors"
+        );
         setDoctors(res.data);
       } catch (error) {
         console.error("Failed to fetch doctors", error);
       }
     };
-  
-    fetchDoctors();
-  }, [])
 
+    fetchDoctors();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -51,41 +48,43 @@ function AppointmentCreation({
     setFormData((prev) => ({ ...prev, doctor }));
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.timeData || !formData.doctor) {
       alert("Please select time and doctor.");
       return;
     }
 
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token");
     if (!token) {
-    alert("Not authenticated");
-    return;
-  }
-  try {
-    const payload = {
-      patientName: formData.name,
-      comment: formData.comment,
-      cabinet: formData.doctor.cabinetNumber,
-      doctorName: formData.doctor.name,
-      time: formData.timeData.startTime,
-      duration: formData.timeData.duration,
-      date: dayjs(formData.timeData.date).format("YYYY-MM-DD"),
+      alert("Not authenticated");
+      return;
     }
-    console.log(payload);
-    const res = await axios.post('http://localhost:3000/apiAppointment/createapp', 
-      payload,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
+    try {
+      const payload = {
+        patientName: formData.name,
+        comment: formData.comment,
+        cabinet: formData.doctor.cabinetNumber,
+        doctorName: formData.doctor.name,
+        time: formData.timeData.startTime,
+        duration: formData.timeData.duration,
+        date: dayjs(formData.timeData.date).format("YYYY-MM-DD"),
+      };
+      console.log(payload);
+      const res = await axios.post(
+        "http://localhost:3000/apiAppointment/createapp",
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      })
-      fetchAppointments()
+      );
+      fetchAppointments();
       setShowAppointmentCreation(false);
-  } catch (error) {
-    console.log(error)
-  }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -102,7 +101,12 @@ function AppointmentCreation({
             <label>Full Name</label>
           </div>
           <div className="inputForm">
-            <FontAwesomeIcon icon={faUser} style={{ color: "#FF5858" }}/>
+            <span
+              class="material-symbols-outlined"
+              style={{ color: "#FF5858" }}
+            >
+              person
+            </span>
             <input
               id="name"
               name="name"
@@ -119,7 +123,12 @@ function AppointmentCreation({
             <label>Comment</label>
           </div>
           <div className="inputForm">
-            <FontAwesomeIcon icon={faComment} style={{ color: "#FF5858" }}/>
+            <span
+              class="material-symbols-outlined"
+              style={{ color: "#FF5858" }}
+            >
+              comment
+            </span>
             <input
               id="comment"
               name="comment"
@@ -132,11 +141,12 @@ function AppointmentCreation({
             />
           </div>
 
-            <TimeInput 
+          <TimeInput
             onTimeSelect={handleTimeSelect}
             onDoctorSelect={handleDoctorSelect}
             selectedDoctor={formData.doctor}
-            doctors={doctors} />
+            doctors={doctors}
+          />
 
           <button type="submit" className="button-submit">
             Створити запис

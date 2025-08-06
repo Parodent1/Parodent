@@ -58,7 +58,7 @@ function Login() {
             <label>Email</label>
           </div>
           <div className="inputForm">
-            <span className="material-symbols-outlined">alternate_email</span>
+            <span class="material-symbols-outlined">alternate_email</span>
             <input
               type="email"
               className="input"

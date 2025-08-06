@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./timeInput.css";
-import Calendar from "../../calendar/Calendar"; // не забудь, якщо використовуєш календар
-import axios from "axios";
+import Calendar from "../../calendar/Calendar";
 
 function TimeInput({ onTimeSelect, doctors, selectedDoctor, onDoctorSelect }) {
   const [startTime, setStartTime] = useState("");
