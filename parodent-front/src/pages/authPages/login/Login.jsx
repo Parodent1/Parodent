@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
@@ -98,7 +98,7 @@ function Login() {
               <input type="checkbox" />
               <label>Remember me</label>
             </div>
-            <span className="span">Forgot password?</span>
+            <Link to='/passwordRecover' className="span">Forgot password?</Link>
           </div>
 
           <button className="button-submit">Sign In</button>

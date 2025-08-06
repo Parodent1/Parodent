@@ -9,6 +9,7 @@ import LogIn from "../authPages/login/Login";
 import PrivateRoute from "../../../privateRoute";
 
 import './content.css';
+import PasswordRecover from "../authPages/passwordRecover/PasswordRecover";
 
 function DefaultRoute() {
   const {isAuthenticated, loading } = useAuth()
@@ -26,6 +27,7 @@ function Content() {
       <Routes>
         <Route path='/' element={<DefaultRoute />} />
         <Route path="/login" element={<LogIn/>} />
+        <Route path="/passwordRecover" element={<PasswordRecover/>} />
 
         <Route path='/appointments' element={
           <PrivateRoute>
