@@ -22,8 +22,10 @@ export const AppointmentProvider = ({children}) => {
             headers: { Authorization: `Bearer ${token}` },
             }
         );
-    
+        
+        // console.log(res.data)
         const groupedAppointments = res.data;
+
         const allAppointments = Object.values(groupedAppointments).flat();
     
         setAppointments(allAppointments);
@@ -36,8 +38,37 @@ export const AppointmentProvider = ({children}) => {
         fetchAppointments();
     }, [selectedDate]);
     
+    const deleteAppointment = async(id) => {
+        const token = localStorage.getItem("token");
+        try {
+            await axios.delete(`http://localhost:3000/apiAppointment/appointment/${id}`,{
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            setAppointments(prev => prev.filter(appt => appt.id !== id))
+        } catch (error) {
+            console.error('Error deleting appointment:', error)
+        }
+    }
+
+    const editAppointment = async(id, updatedData) => {
+        const token = localStorage.getItem('token');
+        try {
+            await axios.put(`http://localhost:3000/apiAppointment/appointment/${id}`,
+                updatedData,
+                {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            setAppointments((prev) => prev.map((appt) => {appt.id === id ? {...appt, ...res.data}: appt}))
+    } catch (eror) {
+        console.error("Error editing appointment:", eror);
+    }
+}
     return (
-        <AppointmentContext.Provider value={{ appointments, fetchAppointments }}>
+        <AppointmentContext.Provider value={{ appointments, fetchAppointments, deleteAppointment, editAppointment }}>
         {children}
         </AppointmentContext.Provider>
     );

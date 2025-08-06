@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./timeInput.css";
 import Calendar from "../../calendar/Calendar"; // не забудь, якщо використовуєш календар
 import axios from "axios";
+import { useShowAppointmentCreation } from "../../../../../context/AppointmentCreationContext";
 
 function TimeInput({ onTimeSelect, doctors, selectedDoctor, onDoctorSelect }) {
   const [startTime, setStartTime] = useState("");
   const [duration, setDuration] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
+  
+  const { editingAppointment } = useShowAppointmentCreation()
 
   useEffect(() => {
     if (startTime && duration && selectedDate) {
@@ -57,7 +60,7 @@ function TimeInput({ onTimeSelect, doctors, selectedDoctor, onDoctorSelect }) {
           className="dateInput"
           value={startTime}
           onChange={(e) => setStartTime(e.target.value)}
-          required
+          required={!editingAppointment}
         />
       </div>
 
@@ -74,7 +77,7 @@ function TimeInput({ onTimeSelect, doctors, selectedDoctor, onDoctorSelect }) {
             const onlyNumbers = e.target.value.replace(/\D/g, "");
             setDuration(onlyNumbers);
           }}
-          required
+          required={!editingAppointment}
         />
       </div>
 

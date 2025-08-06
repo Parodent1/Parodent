@@ -4,14 +4,14 @@ import Calendar from "./calendar/Calendar";
 import AppointmentCreation from "./appointmenstCreation/AppointmentsCreation";
 import { useAppointmentTabs } from "../../../context/AppointmentTabsContext";
 import { useAppointmentDate } from "../../../context/AppointmentDataContext";
+import { useShowAppointmentCreation } from "../../../context/AppointmentCreationContext";
 
 function AppointmentActionBtn() {
   const [showCalendar, setShowCalendar] = useState(false);
   const { selectedTab, setSelectedTab } = useAppointmentTabs();
-  const [showAppointmentCreation, setShowAppointmentCreation] = useState(false);
+  const { showAppointmentCreation, setShowAppointmentCreation } = useShowAppointmentCreation();
 
   const { selectedDate, setSelectedDate } = useAppointmentDate();
-
 
   const formatSelectedDate = () => {
   const dateObj = selectedDate instanceof Date ? selectedDate : new Date(selectedDate);
@@ -28,7 +28,7 @@ const handleSelectSchedule = (e) => {
   const doctors = ["Дмитро Тодосюк", "Андрій Коваленко", "Наталія Сидоренко"];
 
   return (
-    <div className="calendarContainer">
+    <div className="actionBtnBody">
       <div className="calendarContainerContent">
         <button
           className="ActionBtn"
@@ -64,7 +64,7 @@ const handleSelectSchedule = (e) => {
             onChange={handleSelectSchedule}
             className="doctorSelectBtn"
           >
-            <option value="allClinic">All clinic</option>
+            <option value="allClinic" >All clinic</option>
             {doctors.map((doctor, index) => (
               <option key={index} value={doctor}>
                 {doctor}
