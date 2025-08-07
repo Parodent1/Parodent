@@ -63,7 +63,7 @@ const handleSelectSchedule = (e) => {
             onChange={handleSelectSchedule}
             className="doctorSelectBtn"
           >
-            <option value="allClinic">All clinic</option>
+            <option value="allClinic" >All clinic</option>
             {doctors.map((doctor, index) => (
               <option key={index} value={doctor}>
                 {doctor}

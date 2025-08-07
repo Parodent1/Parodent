@@ -2,18 +2,28 @@ import "./appointment.css";
 import EmojiSelector from "../emojiSelector/EmojiSelector";
 import { useState } from "react";
 import { useShowAppointmentCreation } from "../../context/AppointmentCreationContext";
+import { useAppointments } from "../../context/AppointmentContext";
 
 function Appointment({ data }) {
   const [selectedEmoji, setSelectedEmoji] = useState("😀"); // або інше емодзі за замовчуванням
   const [isEmojiOpen, setIsEmojiOpen] = useState(false);
   const [editModal, setEditModal] = useState(false);
-
-  const { showAppointmentCreation, setShowAppointmentCreation } =
-    useShowAppointmentCreation();
+  const { deleteAppointment } = useAppointments();
+  const {
+    showAppointmentCreation,
+    setShowAppointmentCreation,
+    setEditingAppointment,
+  } = useShowAppointmentCreation();
 
   const hadleEditModal = () => {
     setEditModal(!editModal);
   };
+
+  const handleDelete = async () => {
+    await deleteAppointment(data.id);
+    setEditModal(false);
+  };
+
   return (
     <div className="allClinicAppointmentBody">
       <div className="appointmentHeader">
@@ -27,7 +37,10 @@ function Appointment({ data }) {
           <p className="coment">{data.comment}</p>
         </div>
         <div className="editButtonBox">
-          <div className="emojiTrigger" onClick={() => setIsEmojiOpen(true)}>
+          <div
+            className="emojiTrigger"
+            onClick={() => setIsEmojiOpen(!isEmojiOpen)}
+          >
             {selectedEmoji}
           </div>
           <span
@@ -39,54 +52,52 @@ function Appointment({ data }) {
           </span>
 
           {editModal && (
-              <div
-                className="editModalBody"
-                onClick={(e) => e.stopPropagation()}
+            <div className="editModalBody" onClick={(e) => e.stopPropagation()}>
+              <button
+                onClick={() => {
+                  setEditModal(false);
+                  handleDelete();
+                }}
+                className="editBtn"
               >
-                <button
-                  className="editBtn"
-                  onClick={() => {
-                    setEditModal(false);
-                    // setShowAppointmentCreation(!showAppointmentCreation);
-                  }}
+                {" "}
+                <span
+                  class="material-symbols-outlined"
+                  style={{ color: "#FF5858" }}
                 >
-                  {" "}
-                  <span
-                    class="material-symbols-outlined"
-                    style={{ color: "#FF5858" }}
-                  >
-                    delete
-                  </span>
-                  Delete
-                </button>
-                <button
-                  className="editBtn"
-                  onClick={() => {
-                    setEditModal(false);
-                    setShowAppointmentCreation(!showAppointmentCreation);
-                  }}
+                  delete
+                </span>
+                Delete
+              </button>
+              <button
+                className="editBtn"
+                onClick={() => {
+                  setEditingAppointment(data);
+                  setEditModal(false);
+                  setShowAppointmentCreation(!showAppointmentCreation);
+                }}
+              >
+                {" "}
+                <span
+                  class="material-symbols-outlined"
+                  style={{ color: "#FF5858" }}
                 >
-                  {" "}
-                  <span
-                    class="material-symbols-outlined"
-                    style={{ color: "#FF5858" }}
-                  >
-                    edit
-                  </span>
-                  Edit
-                </button>
-              </div>
+                  edit
+                </span>
+                Edit
+              </button>
+            </div>
           )}
         </div>
       </div>
       <div className="appointmentsEmoji">
-          <EmojiSelector
-            emojiKey="doctorEmoji"
-            isOpen={isEmojiOpen}
-            setIsOpen={setIsEmojiOpen}
-            onEmojiChange={setSelectedEmoji}
-          />
-        </div>
+        <EmojiSelector
+          emojiKey="doctorEmoji"
+          isOpen={isEmojiOpen}
+          setIsOpen={setIsEmojiOpen}
+          onEmojiChange={setSelectedEmoji}
+        />
+      </div>
     </div>
   );
 }
