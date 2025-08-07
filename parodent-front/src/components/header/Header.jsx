@@ -96,7 +96,7 @@ function Header() {
               ...sliderStyle,
               position: "absolute",
               borderRadius: "9999px",
-              backgroundColor: "#000",
+              backgroundColor: "#343A40",
               transition: "all 0.3s ease",
               zIndex: 0,
             }}

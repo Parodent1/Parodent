@@ -1,7 +1,7 @@
 
 .actionBtnBody{
     padding: .3em;
-    background-color: var(--white-color);
+    background-color: var( --white-grey);
     border-radius: 9999px;
     display: flex;
     justify-content: space-between;
@@ -13,7 +13,7 @@
     text-decoration: none;
     font-size: 1em;
     color: var(--black-color);
-    background-color: var(--grey-color);
+    background-color: var(--light-grey);
     border-radius: 9999px;
     border: none;
     padding: 0.5em;
@@ -31,5 +31,5 @@
 
 .ActionBtn:active,
 .ActionBtn:hover {
-    background-color: var(--dark-grey-color);
+    background-color: var(--grey);
 }

@@ -1,67 +1,76 @@
 .allClinicAppointmentBody {
   display: flex;
-  position: relative;
   flex-direction: column;
   width: 98%;
-  background-color: var(--grey-color);
+  background-color: var(--white-grey);
   padding: 1em;
   border-radius: 30px;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
-  height: 6em;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  transition: background-color 0.3s ease;
 }
-.appointmentHeader {
+
+.allClinicAppointmentBody:hover {
+  background-color: #f9fafb;
+}
+
+.appointmentContent {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
+  align-items: flex-start;
 }
-.clientName,
-.appointmentTime {
+
+.leftBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  max-width: 65%;
+}
+
+.rightBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5em;
+}
+
+.rightActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.clientName {
   font-size: 1em;
+  font-weight: 600;
 }
-.appointmentBottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.appointmentsComplains {
-  width: 90%;
-  flex-wrap: wrap;
-}
+
 .coment {
   font-size: 0.8em;
-  width: 100%;
-}
-.appointmentsEmoji {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  min-height: 3em;
-  width: 4.5em;
-  position: relative;
+  color: #555;
 }
 
-.editButtonBox {
-  align-items: center;
-  display: flex;
-  cursor: pointer;
-  border:  1px solid red;
-}
-
-.editButtonBox span {
-  padding: 0.3em;
+.appointmentTime {
+  font-size: 0.9em;
+  font-weight: 500;
 }
 
 .emojiTrigger {
   font-size: 1.5em;
-  padding: 0.5em;
+  padding: 0.3em;
+  cursor: pointer;
+}
+
+.editButtonBox span,
+.rightActions span {
+  padding: 0.3em;
+  cursor: pointer;
 }
 
 .editModalBody {
   position: absolute;
-  border-radius: 30px;
+  border-radius: 20px;
   top: 0;
   left: 0;
   height: 6em;
@@ -71,58 +80,29 @@
   align-items: center;
   background-color: var(--white-color);
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  gap: 1em;
 }
 
 .editBtn {
-  text-decoration: none;
-  font-size: 1em;
-  color: var(--black-color);
+  font-size: 0.9em;
   background-color: var(--grey-color);
-  border-radius: 9999px;
   border: none;
+  border-radius: 9999px;
+  padding: 0.5em 1em;
   display: flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  height: fit-content;
-  width: fit-content;
-  padding-right: 1em;
-  z-index: 1000;
-  transition: color 0.3s ease;
-  gap: 0.1em;
-  cursor: pointer;
+  gap: 0.3em;
   font-weight: 600;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .appointmentsEmoji {
-  height: 6em;
-  width: 19.5em;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.appointmentsEmoji span{
-  cursor: pointer;
-}
-
-.editModalOverlay{
-  cursor: default;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  padding: 1em;
-  z-index: 10000;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.editModalBody{
-  background-color: var(--white-color);
+  height: 6em;
+  width: 19.5em;
+  pointer-events: none;
 }

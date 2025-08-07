@@ -28,7 +28,7 @@ input:-webkit-autofill {
 .loginForm {
   display: flex;
   flex-direction: column;
-  background-color: var(--white-color);
+  background-color: var(--white-grey);
   gap: 0.5em;
   padding: 30px;
   width: 450px;
