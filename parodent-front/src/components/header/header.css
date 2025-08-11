@@ -41,7 +41,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   align-items: center;
   gap: 2em;
   padding: .3em;
-  background-color: var(--grey-color);
+  background-color: var(--grey);
   border-radius: 9999px;
   position: relative;
 }
@@ -128,11 +128,9 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 @keyframes slideIn {
   from {
     transform: translateY(-100%);
-    opacity: 0;
   }
   to {
     transform: translateY(0);
-    opacity: 1;
   }
 }
 
@@ -148,20 +146,20 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 }
 
 .profileModalContent{
-  background-color: var(--white-color);
+  background-color: var(--white-grey);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   position: absolute;
   display: flex;
   flex-direction: column;
   gap: .5em;
   right: 1em;
-  top: 6.5em;
+  top: 5.5em;
   border-radius: 20px;
   padding: 1em;
   width: 13em;
-  animation: slideIn 0.3s ease-out forwards;
+  animation: slideIn 0.5s ease-out forwards;
 }
 
 .profileModalContent.closing{
-  animation: slideOut 0.3s ease-in forwards;
+  animation: slideOut 0.5s ease-in forwards;
 }

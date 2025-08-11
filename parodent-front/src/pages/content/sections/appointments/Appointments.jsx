@@ -2,11 +2,8 @@ import "./appointments.css";
 import Appointment from "../../../../components/appointments/Appointment";
 import { useAppointmentTabs } from "../../../../context/AppointmentTabsContext";
 import AppointmentPersonal from "../../../../components/appointmentPersonal/AppointmentPersonal";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import dayjs from "dayjs";
+import { useEffect } from "react";
 import { useAppointmentDate } from "../../../../context/AppointmentDataContext";
-import AppointmentActionBtn from "../../../../components/header/appointmentActionBtn/AppointmentActionBtn";
 import { useAppointments } from "../../../../context/AppointmentContext";
 import { useAuth } from "../../../../context/AuthContext";
 
@@ -51,26 +48,27 @@ function Appointments() {
         {selectedTab === "allClinic" ? (
           <div className="allClinicTabContainer">
             {rooms.map((room) => (
-              <div className="room" key={room.id}>
-                <h3 className="roomName">
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ color: "#FF5858" }}
-                  >
-                    door_back
-                  </span>
-                  Cabinet {room.id}
-                </h3>
-                <div className="appointmentContainer">
-                  {appointments
-                  .filter((a) => a.cabinet === room.id)
-                  .sort((a, b) => a.time.localeCompare(b.time))
-                  .map((appointment) => (
-                  <Appointment key={appointment.id} data={appointment} />
-  ))}
-
-                </div>
-                <div className="roomPersonal">
+              <div className="roomOverlay">
+                {" "}
+                <div className="room" key={room.id}>
+                  <h3 className="roomName">
+                    <span
+                      className="material-symbols-outlined"
+                      style={{ color: "#FF5858" }}
+                    >
+                      door_back
+                    </span>
+                    Cabinet {room.id}
+                  </h3>
+                  <div className="appointmentContainer">
+                    {appointments
+                      .filter((a) => a.cabinet === room.id)
+                      .sort((a, b) => a.time.localeCompare(b.time))
+                      .map((appointment) => (
+                        <Appointment key={appointment.id} data={appointment} />
+                      ))}
+                  </div>
+                  <div className="roomPersonal">
                   <h5>
                     <span>Doctor</span>: {room.doctor}
                   </h5>
@@ -78,6 +76,8 @@ function Appointments() {
                     <span>Assistant</span>: {room.assistant}
                   </h5>
                 </div>
+                </div>
+                
               </div>
             ))}
           </div>
@@ -86,7 +86,10 @@ function Appointments() {
             {days.map((day) => (
               <div className="day" key={day.id}>
                 <h3 className="dayName">
-                  <span className="material-symbols-outlined" style={{ color: "#FF5858" }}>
+                  <span
+                    className="material-symbols-outlined"
+                    style={{ color: "#FF5858" }}
+                  >
                     calendar_today
                   </span>
                   {day.id}

@@ -1,5 +1,4 @@
 import "./appointmentPersonal.css";
-import EmojiSelector from "../emojiSelector/EmojiSelector";
 
 function AppointmentPersonal() {
   const handleEmojiChange = (emoji) => {
